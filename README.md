@@ -1,2 +1,2 @@
-# hiking-hoffmans-graphql-api
-another backend for Hiking Hoffmans, but with GraphQL
+# hiking-hoffmans-api
+Backend API for Hiking Hoffmans Web &amp; Mobile Apps
