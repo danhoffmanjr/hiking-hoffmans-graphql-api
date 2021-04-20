@@ -18,6 +18,10 @@ jobs:
           DATA=$(cat "./Data/env_paths.json")
           echo "::set-output name=MATRIX::${DATA//'%'/'%25'}"
 
+      - name: Confirm Output value
+        id: confirm-matrix-valueß
+        run: echo "MATRIX set to --> ${{ steps.set-matrix.outputs.MATRIX }}"
+
   build_test:
     needs: set_build_matrix
     runs-on: ubuntu-latest
