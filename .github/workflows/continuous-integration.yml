@@ -16,7 +16,10 @@ jobs:
         id: set-matrix
         run: |
           DATA=$(cat "./Data/env_paths.json")
-          echo "::set-output name=MATRIX::${DATA//'%'/'%25'}"
+          DATA="${DATA//'%'/'%25'}"
+          DATA="${DATA//'\n'/'%0A'}"
+          DATA="${DATA//'\r'/'%0D'}"
+          echo "::set-output name=MATRIX::${DATA}"
 
       - name: Confirm Output value
         id: confirm-matrix-value
