@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Environment 1",
+        "path": "./k8s/deploy/dev"
+    },
+    {
+        "name": "Environment 2",
+        "path": "./k8s/deploy/test"
+    },
+    {
+        "name": "Environment 3",
+        "path": "./k8s/deploy/prod"
+    }
+]

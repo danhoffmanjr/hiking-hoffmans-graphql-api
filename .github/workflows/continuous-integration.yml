@@ -1,0 +1,29 @@
+name: Continuous Integration
+
+on: push
+
+jobs:
+  set_build_matrix:
+    name: Set the build matrix for next job
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.MATRIX }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set Matrix Output from Json file
+        id: set-matrix
+        run: |
+          DATA=$(cat "./Data/env_paths.json")
+          echo "::set-output name=MATRIX::${DATA//'%'/'%25'}"
+
+  build_test:
+    needs: set_build_matrix
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        env: ${{ fromJson(needs.set_build_matrix.outputs.matrix) }}
+    steps:
+      - name: Print Environment Paths
+        run: echo "${{ matrix.env.path }}"
