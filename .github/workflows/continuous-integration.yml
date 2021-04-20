@@ -19,7 +19,7 @@ jobs:
           echo "::set-output name=MATRIX::${DATA//'%'/'%25'}"
 
       - name: Confirm Output value
-        id: confirm-matrix-valueß
+        id: confirm-matrix-value
         run: echo "MATRIX set to --> ${{ steps.set-matrix.outputs.MATRIX }}"
 
   build_test:
